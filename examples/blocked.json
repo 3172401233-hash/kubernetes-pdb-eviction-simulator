@@ -1,0 +1,16 @@
+{
+  "nodes": [
+    { "name": "node-1", "zone": "zone-a" },
+    { "name": "node-2", "zone": "zone-a" },
+    { "name": "node-3", "zone": "zone-b" }
+  ],
+  "pods": [
+    { "name": "web-1", "node": "node-1", "labels": { "app": "web" }, "controller": "deployment/web", "healthy": true },
+    { "name": "web-2", "node": "node-2", "labels": { "app": "web" }, "controller": "deployment/web", "healthy": true },
+    { "name": "web-3", "node": "node-3", "labels": { "app": "web" }, "controller": "deployment/web", "healthy": true }
+  ],
+  "pdbs": [
+    { "name": "web-pdb", "selector": { "app": "web" }, "minAvailable": 2 }
+  ],
+  "drainOrder": ["node-1", "node-2", "node-3"]
+}
